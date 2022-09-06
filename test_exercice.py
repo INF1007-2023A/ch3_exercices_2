@@ -12,11 +12,15 @@ class TestExercice(unittest.TestCase):
 		pass
 
 	def test_dissipated_power(self):
-		data = [(69, 420),
-		        (42, 9000)]
-		expected = [69*69/420,
-		            42*42/9000]
-		output = [dissipated_power(d[0], d[1]) for d in data]
+		data = [
+			(69, 420),
+			(42, 9000)
+		]
+		expected = [
+			69*69/420,
+			42*42/9000
+		]
+		output = [dissipated_power(*d) for d in data]
 		self.assertEqual(
 			expected,
 			output,
@@ -24,16 +28,20 @@ class TestExercice(unittest.TestCase):
 		)
 
 	def test_orthogonal(self):
-		data = [((1, 1), (-1, 1)),
-		        ((0, 0), (1, 1)),
-		        ((0, 0), (0, 0)),
-		        ((1, 1), (1, 1)),
-		        ((-1, -1), (1, 1))]
-		expected = [True,
-		            True,
-		            True,
-		            False,
-		            False]
+		data = [
+			((1, 1), (-1, 1)),
+			((0, 0), (1, 1)),
+			((0, 0), (0, 0)),
+			((1, 1), (1, 1)),
+			((-1, -1), (1, 1))
+		]
+		expected = [
+			True,
+			True,
+			True,
+			False,
+			False
+		]
 		output = [orthogonal(d[0], d[1]) for d in data]
 		self.assertEqual(
 			expected,
@@ -58,31 +66,62 @@ class TestExercice(unittest.TestCase):
 		)
 
 	def test_bills(self):
-		data = [0,
-		        1,
-		        5,
-		        10,
-		        20,
-		        420,
-		        69,
-		        137,
-		        0xBABE]
-		expected = [(0, 0, 0, 0),
-		            (0, 0, 0, 1),
-		            (0, 0, 1, 0),
-		            (0, 1, 0, 0),
-		            (1, 0, 0, 0),
-		            (21, 0, 0, 0),
-		            (3, 0, 1, 4),
-		            (6, 1, 1, 2),
-		            (2390, 0, 1, 1)]
+		data = [
+			0,
+			1,
+			5,
+			10,
+			20,
+			420,
+			69,
+			137,
+			0xBABE
+		]
+		expected = [
+			(0, 0, 0, 0),
+			(0, 0, 0, 1),
+			(0, 0, 1, 0),
+			(0, 1, 0, 0),
+			(1, 0, 0, 0),
+			(21, 0, 0, 0),
+			(3, 0, 1, 4),
+			(6, 1, 1, 2),
+			(2390, 0, 1, 1)
+		]
 		output = [bills(d) for d in data]
 		self.assertEqual(
 			expected,
 			output,
 			"Calcul incorrect"
 		)
-		
+
+	def test_format_base(self):
+		digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		data = [
+			(123, 10, digits),
+			(123, 16, digits),
+			(123, 2, digits),
+			(123, 8, digits),
+			(123, 11, digits),
+			(-123, 16, digits),
+			(-123, 20, digits)
+		]
+		expected = [
+			"123",
+			"7B",
+			"1111011",
+			"173",
+			"102",
+			"-7B",
+			"-63"
+		]
+		output = [format_base(*d) for d in data]
+		self.assertEqual(
+			expected,
+			output,
+			"Calcul incorrect"
+		)
+
 
 
 if __name__ == "__main__":
