@@ -18,7 +18,7 @@ Par exemple, la liste [1, 4, -2, 10] donne une moyenne de 5.
 
 ## 4. Monnaie à rendre
 
-Écrire un algorithme qui calcule, à partir d'une valeur entière, la monnaie à rendre en billets de 100$, 20$, 10$, 5$ et en pièces de 1$.
+Écrire un algorithme qui calcule, à partir d'une valeur entière, la monnaie à rendre en billets de 20$, 10$, 5$ et en pièces de 1$.
 
 ## 5. Formater dans une base numérique donnée
 
